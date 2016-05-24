@@ -7,8 +7,6 @@
 
     function cardComponent() {
         return {
-            controller: 'CardController',
-            controllerAs: 'card',
             bindings: {
                 img: '@',
                 title: '@',
@@ -16,9 +14,9 @@
             },
             template: `
                 <div class="card">
-                    <a class="card-link" ng-href="{{ ::card.href }}"></a>
-                    <img class="card-img" ng-src="{{ ::card.img }}">
-                    <h2 class="card-title">{{ ::card.title }}</h2>
+                    <a class="card__link" ng-href="{{ ::$ctrl.href }}"></a>
+                    <img class="card__img" ng-src="{{ ::$ctrl.img }}">
+                    <h2 class="card__title">{{ ::$ctrl.title }}</h2>
                 </div>
             `
         };
