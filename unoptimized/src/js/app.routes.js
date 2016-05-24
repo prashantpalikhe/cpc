@@ -15,6 +15,11 @@
             .when('/', {
                 templateUrl: './src/views/list.html',
                 controller: 'EpisodesListController as episodesList'
-            });
+            })
+
+            .when('/current', {
+                templateUrl: './src/views/current.html',
+                controller: 'CurrentController as current'
+            })
     }
 })();

@@ -5,32 +5,32 @@
             {
                 "id": 1,
                 "title": "The pilot",
-                "videoUrl": "https://r5---sn-5hne6n7l.c.docs.google.com/videoplayback?requiressl=yes&id=e02a9ef26067cdfc&itag=18&source=webdrive&app=texmex&ip=83.85.218.101&ipbits=8&expire=1464119958&sparams=requiressl,id,itag,source,ip,ipbits,expire&signature=CA73F632A2A1C4622682EC2417C46BF66F6D33.36F8EA3499D3C81700311768A431395E2A662F48&key=ck2&mm=30&mn=sn-5hne6n7l&ms=nxu&mt=1464105387&mv=m&nh=IgpwZjAxLmFtczE2Kg4yMTMuNTEuMTU2LjEwMQ&pl=15&cpn=pPBgCWg4qX9RkiuX&c=WEB&cver=1.20160523"
+                "videoUrl": "./src/video/s1e1.webm"
             },
             {
                 "id": 2,
                 "title": "The one with the Sonogram at the End",
-                "videoUrl": "https://r5---sn-5hne6n7l.c.docs.google.com/videoplayback?requiressl=yes&id=e02a9ef26067cdfc&itag=18&source=webdrive&app=texmex&ip=83.85.218.101&ipbits=8&expire=1464119958&sparams=requiressl,id,itag,source,ip,ipbits,expire&signature=CA73F632A2A1C4622682EC2417C46BF66F6D33.36F8EA3499D3C81700311768A431395E2A662F48&key=ck2&mm=30&mn=sn-5hne6n7l&ms=nxu&mt=1464105387&mv=m&nh=IgpwZjAxLmFtczE2Kg4yMTMuNTEuMTU2LjEwMQ&pl=15&cpn=pPBgCWg4qX9RkiuX&c=WEB&cver=1.20160523"
+                "videoUrl": "./src/video/s1e1.webm"
             },
             {
                 "id": 3,
                 "title": "The One with the Thumb",
-                "videoUrl": "https://r5---sn-5hne6n7l.c.docs.google.com/videoplayback?requiressl=yes&id=e02a9ef26067cdfc&itag=18&source=webdrive&app=texmex&ip=83.85.218.101&ipbits=8&expire=1464119958&sparams=requiressl,id,itag,source,ip,ipbits,expire&signature=CA73F632A2A1C4622682EC2417C46BF66F6D33.36F8EA3499D3C81700311768A431395E2A662F48&key=ck2&mm=30&mn=sn-5hne6n7l&ms=nxu&mt=1464105387&mv=m&nh=IgpwZjAxLmFtczE2Kg4yMTMuNTEuMTU2LjEwMQ&pl=15&cpn=pPBgCWg4qX9RkiuX&c=WEB&cver=1.20160523"
+                "videoUrl": "./src/video/s1e1.webm"
             },
             {
                 "id": 4,
                 "title": "The One with George Stephanopoulos",
-                "videoUrl": "https://r5---sn-5hne6n7l.c.docs.google.com/videoplayback?requiressl=yes&id=e02a9ef26067cdfc&itag=18&source=webdrive&app=texmex&ip=83.85.218.101&ipbits=8&expire=1464119958&sparams=requiressl,id,itag,source,ip,ipbits,expire&signature=CA73F632A2A1C4622682EC2417C46BF66F6D33.36F8EA3499D3C81700311768A431395E2A662F48&key=ck2&mm=30&mn=sn-5hne6n7l&ms=nxu&mt=1464105387&mv=m&nh=IgpwZjAxLmFtczE2Kg4yMTMuNTEuMTU2LjEwMQ&pl=15&cpn=pPBgCWg4qX9RkiuX&c=WEB&cver=1.20160523"
+                "videoUrl": "./src/video/s1e1.webm"
             },
             {
                 "id": 5,
                 "title": "The One with the East German Laundry Detergent",
-                "videoUrl": "https://r5---sn-5hne6n7l.c.docs.google.com/videoplayback?requiressl=yes&id=e02a9ef26067cdfc&itag=18&source=webdrive&app=texmex&ip=83.85.218.101&ipbits=8&expire=1464119958&sparams=requiressl,id,itag,source,ip,ipbits,expire&signature=CA73F632A2A1C4622682EC2417C46BF66F6D33.36F8EA3499D3C81700311768A431395E2A662F48&key=ck2&mm=30&mn=sn-5hne6n7l&ms=nxu&mt=1464105387&mv=m&nh=IgpwZjAxLmFtczE2Kg4yMTMuNTEuMTU2LjEwMQ&pl=15&cpn=pPBgCWg4qX9RkiuX&c=WEB&cver=1.20160523"
+                "videoUrl": "./src/video/s1e1.webm"
             },
             {
                 "id": 6,
                 "title": "The One with the Butt",
-                "videoUrl": "https://r5---sn-5hne6n7l.c.docs.google.com/videoplayback?requiressl=yes&id=e02a9ef26067cdfc&itag=18&source=webdrive&app=texmex&ip=83.85.218.101&ipbits=8&expire=1464119958&sparams=requiressl,id,itag,source,ip,ipbits,expire&signature=CA73F632A2A1C4622682EC2417C46BF66F6D33.36F8EA3499D3C81700311768A431395E2A662F48&key=ck2&mm=30&mn=sn-5hne6n7l&ms=nxu&mt=1464105387&mv=m&nh=IgpwZjAxLmFtczE2Kg4yMTMuNTEuMTU2LjEwMQ&pl=15&cpn=pPBgCWg4qX9RkiuX&c=WEB&cver=1.20160523"
+                "videoUrl": "./src/video/s1e1.webm"
             }
         ]
     },
@@ -40,12 +40,12 @@
             {
                 "id": 1,
                 "title": "The One with Ross's New Girlfriend",
-                "videoUrl": "https://r5---sn-5hne6n7l.c.docs.google.com/videoplayback?requiressl=yes&id=e02a9ef26067cdfc&itag=18&source=webdrive&app=texmex&ip=83.85.218.101&ipbits=8&expire=1464119958&sparams=requiressl,id,itag,source,ip,ipbits,expire&signature=CA73F632A2A1C4622682EC2417C46BF66F6D33.36F8EA3499D3C81700311768A431395E2A662F48&key=ck2&mm=30&mn=sn-5hne6n7l&ms=nxu&mt=1464105387&mv=m&nh=IgpwZjAxLmFtczE2Kg4yMTMuNTEuMTU2LjEwMQ&pl=15&cpn=pPBgCWg4qX9RkiuX&c=WEB&cver=1.20160523"
+                "videoUrl": "./src/video/s1e1.webm"
             },
             {
                 "id": 2,
                 "title": "The One with the Breast Milk",
-                "videoUrl": "https://r5---sn-5hne6n7l.c.docs.google.com/videoplayback?requiressl=yes&id=e02a9ef26067cdfc&itag=18&source=webdrive&app=texmex&ip=83.85.218.101&ipbits=8&expire=1464119958&sparams=requiressl,id,itag,source,ip,ipbits,expire&signature=CA73F632A2A1C4622682EC2417C46BF66F6D33.36F8EA3499D3C81700311768A431395E2A662F48&key=ck2&mm=30&mn=sn-5hne6n7l&ms=nxu&mt=1464105387&mv=m&nh=IgpwZjAxLmFtczE2Kg4yMTMuNTEuMTU2LjEwMQ&pl=15&cpn=pPBgCWg4qX9RkiuX&c=WEB&cver=1.20160523"
+                "videoUrl": "./src/video/s1e1.webm"
             }
         ]
     },
@@ -55,12 +55,12 @@
             {
                 "id": 1,
                 "title": "The One with the Princess Leia Fantasy",
-                "videoUrl": "https://r5---sn-5hne6n7l.c.docs.google.com/videoplayback?requiressl=yes&id=e02a9ef26067cdfc&itag=18&source=webdrive&app=texmex&ip=83.85.218.101&ipbits=8&expire=1464119958&sparams=requiressl,id,itag,source,ip,ipbits,expire&signature=CA73F632A2A1C4622682EC2417C46BF66F6D33.36F8EA3499D3C81700311768A431395E2A662F48&key=ck2&mm=30&mn=sn-5hne6n7l&ms=nxu&mt=1464105387&mv=m&nh=IgpwZjAxLmFtczE2Kg4yMTMuNTEuMTU2LjEwMQ&pl=15&cpn=pPBgCWg4qX9RkiuX&c=WEB&cver=1.20160523"
+                "videoUrl": "./src/video/s1e1.webm"
             },
             {
                 "id": 2,
                 "title": "The One Where No One's Ready",
-                "videoUrl": "https://r5---sn-5hne6n7l.c.docs.google.com/videoplayback?requiressl=yes&id=e02a9ef26067cdfc&itag=18&source=webdrive&app=texmex&ip=83.85.218.101&ipbits=8&expire=1464119958&sparams=requiressl,id,itag,source,ip,ipbits,expire&signature=CA73F632A2A1C4622682EC2417C46BF66F6D33.36F8EA3499D3C81700311768A431395E2A662F48&key=ck2&mm=30&mn=sn-5hne6n7l&ms=nxu&mt=1464105387&mv=m&nh=IgpwZjAxLmFtczE2Kg4yMTMuNTEuMTU2LjEwMQ&pl=15&cpn=pPBgCWg4qX9RkiuX&c=WEB&cver=1.20160523"
+                "videoUrl": "./src/video/s1e1.webm"
             }
         ]
     }
