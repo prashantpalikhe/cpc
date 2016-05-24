@@ -42,6 +42,10 @@
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+}
+
+.header__logo__img {
+    display: block;
     height: 35px;
     width: auto;
 }
