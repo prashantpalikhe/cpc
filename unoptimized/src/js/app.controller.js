@@ -3,20 +3,44 @@
 
     angular
         .module('app')
-        .controller('AppController', AppController);
+        .controller('EpisodesListController', EpisodesListController)
+        .controller('AppController', AppController)
+        .controller('SingleEpisodeController', SingleEpisodeController);
 
-    function AppController($element, friendsService) {
+    function SingleEpisodeController() {
         var vm = this;
-        var episodesData;
+    }
+
+    function AppController($element) {
+        var vm = this;
 
         var drawer;
 
-        vm.searchQuery = '';
-
         vm.showMenu = showMenu;
         vm.hideMenu = hideMenu;
-        vm.search   = search;
+
         vm.$postLink = postLink;
+
+        function postLink() {
+            drawer = $element.find('drawer').controller('drawer');
+        }
+
+        function showMenu() {
+            drawer.showDrawer();
+        }
+
+        function hideMenu() {
+            drawer.hideDrawer();
+        }
+    }
+
+    function EpisodesListController(friendsService) {
+        var vm = this;
+        var episodesData;
+
+        vm.searchQuery = '';
+
+        vm.search   = search;
 
         activate();
 
@@ -30,18 +54,6 @@
                 .then(function onEpisodesDataReceived(result) {
                     vm.episodesData = episodesData = result;
                 });
-        }
-
-        function postLink() {
-            drawer = $element.find('drawer').controller('drawer');
-        }
-
-        function showMenu() {
-            drawer.showDrawer();
-        }
-
-        function hideMenu() {
-            drawer.hideDrawer();
         }
 
         function search(query) {

@@ -1,0 +1,12 @@
+<search on-query-changed="episodesList.search(query)"></search>
+
+<div class="seasons">
+    <div class="season" ng-repeat="season in episodesList.episodesData">
+        <h2 class="season__title">Season {{ season.id }}</h2>
+
+        <div class="episodes">
+            <episode ng-repeat="episode in season.episodes" title="{{ episode.title }}" href="#/season/{{ season.id }}/episode/{{ episode.id }}" img="./src/img/s1e1.jpeg"></episode>
+        </div>
+
+    </div>
+</div>
