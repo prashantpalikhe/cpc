@@ -29,8 +29,19 @@
     background: #2980b9;
 }
 
-.logo {
+.header__btn {
+    margin: 0;
+    padding: 0;
+    background: none;
+    outline: none;
+    border: none;
+    color: white;
+}
+
+.header__logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     height: 35px;
     width: auto;
-    margin: 0 auto;
 }

@@ -18,7 +18,9 @@
 <body ng-cloak ng-controller="AppController as app">
 
     <header class="header">
-        <img ng-click="app.showMenu()" class="logo" src="./src/img/logo.jpg" alt="">
+        <button ng-click="app.showMenu()" class="header__btn material-icons">menu</button>
+
+        <img ng-click="app.showMenu()" class="header__logo" src="./src/img/logo.jpg" alt="">
     </header>
 
     <main class="main">
