@@ -19,7 +19,7 @@ body {
 
 main {
     position: absolute;
-    top: 112px;
+    top: 56px;
     right: 0;
     bottom: 0;
     left: 0;
@@ -28,6 +28,10 @@ main {
     overflow-y: auto;
     background: #000;
     -webkit-overflow-scrolling: touch;
+}
+
+.main--list {
+    top: 112px;
 }
 
 .season__title {
