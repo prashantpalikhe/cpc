@@ -57,5 +57,11 @@ main {
     padding: 10px;
     border-radius: 5px;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 12px;
+    max-width: 85vw;
+    display: block;
+    margin: 0 auto;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }

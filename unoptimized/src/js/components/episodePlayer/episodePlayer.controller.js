@@ -9,53 +9,18 @@
         var video;
 
         vm.$onInit = onInit;
-        vm.$onDestroy = onDestroy;
 
         function onInit() {
             video = $element.find('video')[0];
 
-            bindEvents();
-            setPlaybackTime();
+            playVideo();
         }
 
-        function setPlaybackTime() {
-            if (angular.isDefined(vm.episode.timeStamp)) {
-                video.addEventListener('loadedmetadata', function () {
-                    video.currentTime = vm.episode.timeStamp;
-                    video.play();
-                });
-                
-            } else {
-                video.play();
-            }
-        }
+        function playVideo() {
+            video.setAttribute('src', './src/video/' + vm.episode.id + '.mp4');
+            video.play();
 
-        function saveCurrentPlayingEpisode() {
-            var data = angular.extend(
-                {},
-                vm.episode,
-                {timeStamp: video.currentTime}
-            );
-
-            friendsService.saveCurrentPlayingEpisode(data);
-        }
-
-        function bindEvents() {
-            video.addEventListener('playing', saveCurrentPlayingEpisode)
-            video.addEventListener('progress', saveCurrentPlayingEpisode)
-            video.addEventListener('seeked', saveCurrentPlayingEpisode);
-        }
-
-        function unBindEvents() {
-            video.removeEventListener('playing', saveCurrentPlayingEpisode)
-            video.removeEventListener('progress', saveCurrentPlayingEpisode)
-            video.removeEventListener('seeked', saveCurrentPlayingEpisode);
-        }
-
-        function onDestroy() {
-            unBindEvents();
-
-            video.pause();
+            friendsService.saveCurrentPlayingEpisode(vm.episode);
         }
     }
 })();

@@ -6,8 +6,8 @@
         .component('episodePlayer', {
             template: `
                 <div class="episode-player">
-                    <video controls fullscreen>
-                        <source ng-src="{{ episodePlayer.episode.videoUrl }}" type='video/webm;codecs="vp8, vorbis"' />
+                    <video controls>
+                        <source type="video/mp4" />
                     </video>
                 </div>
             `,

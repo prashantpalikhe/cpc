@@ -33,7 +33,7 @@
             friendsService
                 .findEpisode(
                     parseInt($routeParams.seasonId, 10),
-                    parseInt($routeParams.episodeId, 10)
+                    $routeParams.episodeId
                 )
                 .then(function (episode) {
                     vm.episode = episode;
@@ -41,7 +41,7 @@
         }
     }
 
-    function AppController($element) {
+    function AppController($element, $scope) {
         var vm = this;
 
         var drawer;
@@ -62,6 +62,10 @@
         function hideMenu() {
             drawer.hideDrawer();
         }
+
+        $scope.$on('$locationChangeSuccess', function () {
+            hideMenu();
+        });
     }
 
     function EpisodesListController(friendsService) {

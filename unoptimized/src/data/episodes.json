@@ -3,34 +3,28 @@
         "id": 1,
         "episodes": [
             {
-                "id": 1,
-                "title": "The pilot",
-                "videoUrl": "./src/video/s1e1.mp4"
+                "id": "S1E1",
+                "title": "The pilot"
             },
             {
-                "id": 2,
-                "title": "The one with the Sonogram at the End",
-                "videoUrl": "./src/video/s1e1.mp4"
+                "id": "S1E2",
+                "title": "The one with the Sonogram at the End"
             },
             {
-                "id": 3,
-                "title": "The One with the Thumb",
-                "videoUrl": "./src/video/s1e1.mp4"
+                "id": "S1E3",
+                "title": "The One with the Thumb"
             },
             {
-                "id": 4,
-                "title": "The One with George Stephanopoulos",
-                "videoUrl": "./src/video/s1e1.mp4"
+                "id": "S1E4",
+                "title": "The One with George Stephanopoulos"
             },
             {
-                "id": 5,
-                "title": "The One with the East German Laundry Detergent",
-                "videoUrl": "./src/video/s1e1.mp4"
+                "id": "S1E5",
+                "title": "The One with the East German Laundry Detergent"
             },
             {
-                "id": 6,
-                "title": "The One with the Butt",
-                "videoUrl": "./src/video/s1e1.mp4"
+                "id": "S1E6",
+                "title": "The One with the Butt"
             }
         ]
     },
@@ -38,14 +32,12 @@
         "id": 2,
         "episodes": [
             {
-                "id": 1,
-                "title": "The One with Ross's New Girlfriend",
-                "videoUrl": "./src/video/s1e1.mp4"
+                "id": "S2E1",
+                "title": "The One with Ross's New Girlfriend"
             },
             {
-                "id": 2,
-                "title": "The One with the Breast Milk",
-                "videoUrl": "./src/video/s1e1.mp4"
+                "id": "S2E2",
+                "title": "The One with the Breast Milk"
             }
         ]
     },
@@ -53,14 +45,12 @@
         "id": 3,
         "episodes": [
             {
-                "id": 1,
-                "title": "The One with the Princess Leia Fantasy",
-                "videoUrl": "./src/video/s1e1.mp4"
+                "id": "S3E1",
+                "title": "The One with the Princess Leia Fantasy"
             },
             {
-                "id": 2,
-                "title": "The One Where No One's Ready",
-                "videoUrl": "./src/video/s1e1.mp4"
+                "id": "S3E2",
+                "title": "The One Where No One's Ready"
             }
         ]
     }
