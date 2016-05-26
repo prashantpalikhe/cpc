@@ -3,9 +3,9 @@
 
     angular
         .module('app')
-        .component('friendsNowPlayingEpisode', friendsNowPlayingEpisodeComponent());
+        .component('nowPlayingEpisode', nowPlayingEpisodeComponent());
 
-    function friendsNowPlayingEpisodeComponent() {
+    function nowPlayingEpisodeComponent() {
         return {
             bindings: {
                 episode: '<'
