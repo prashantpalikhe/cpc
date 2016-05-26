@@ -11,7 +11,7 @@
     function CurrentController($location, friendsService) {
         var vm = this;
 
-        vm.episode = friendsService.getCurrentPlayingEpisode();
+        vm.episode = friendsService.getNowPlayingEpisode();
 
         if (!angular.isObject(vm.episode)) {
             $location.path('#/');
@@ -73,7 +73,7 @@
         var episodesData;
 
         vm.searchQuery = '';
-        vm.currentPlayingEpisode = null;
+        vm.nowPlayingEpisode = null;
         vm.episodesData = null;
 
         vm.search = search;
@@ -81,12 +81,12 @@
         activate();
 
         function activate() {
-            getCurrentPlayingEpisode();
+            getNowPlayingEpisode();
             getFriendsEpisodesData();
         }
 
-        function getCurrentPlayingEpisode() {
-            vm.currentPlayingEpisode = friendsService.getCurrentPlayingEpisode();
+        function getNowPlayingEpisode() {
+            vm.nowPlayingEpisode = friendsService.getNowPlayingEpisode();
         }
 
         function getFriendsEpisodesData() {

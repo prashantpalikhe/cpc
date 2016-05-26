@@ -20,7 +20,7 @@
             video.setAttribute('src', './src/video/' + vm.episode.id + '.mp4');
             video.play();
 
-            friendsService.saveCurrentPlayingEpisode(vm.episode);
+            friendsService.saveNowPlayingEpisode(vm.episode);
         }
     }
 })();

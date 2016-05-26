@@ -2,9 +2,9 @@
     <search on-query-changed="episodesList.search(query)"></search>
 
     <div class="seasons">
-        <div class="current" ng-if="episodesList.currentPlayingEpisode">
+        <div class="current" ng-if="episodesList.nowPlayingEpisode">
             <a class="current__trigger" ng-href="#/current">
-                Continue watching "{{ episodesList.currentPlayingEpisode.title }}"
+                Continue watching "{{ episodesList.nowPlayingEpisode.title }}"
             </a>
         </div>
 

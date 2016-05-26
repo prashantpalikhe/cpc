@@ -12,8 +12,8 @@
             getEpisodesData: getEpisodesData,
             findEpisode: findEpisode,
             searchByTitle: searchByTitle,
-            saveCurrentPlayingEpisode: saveCurrentPlayingEpisode,
-            getCurrentPlayingEpisode: getCurrentPlayingEpisode
+            saveNowPlayingEpisode: saveNowPlayingEpisode,
+            getNowPlayingEpisode: getNowPlayingEpisode
         };
 
         return service;
@@ -62,19 +62,19 @@
             });
         }
 
-        function saveCurrentPlayingEpisode(currentPlayingEpisodeData) {
-            if (angular.isObject(currentPlayingEpisodeData)) {
-                $window.localStorage.setItem('currentPlayingEpisode', JSON.stringify(currentPlayingEpisodeData));
+        function saveNowPlayingEpisode(nowPlayingEpisodeData) {
+            if (angular.isObject(nowPlayingEpisodeData)) {
+                $window.localStorage.setItem('nowPlayingEpisode', JSON.stringify(nowPlayingEpisodeData));
             } else {
-                $window.localStorage.removeItem('currentPlayingEpisode');
+                $window.localStorage.removeItem('nowPlayingEpisode');
             }
         }
 
-        function getCurrentPlayingEpisode() {
-            var currentPlayingEpisode = $window.localStorage.getItem('currentPlayingEpisode');
+        function getNowPlayingEpisode() {
+            var nowPlayingEpisode = $window.localStorage.getItem('nowPlayingEpisode');
 
-            if (angular.isString(currentPlayingEpisode)) {
-                return JSON.parse(currentPlayingEpisode);
+            if (angular.isString(nowPlayingEpisode)) {
+                return JSON.parse(nowPlayingEpisode);
             } else {
                 return null;
             }
