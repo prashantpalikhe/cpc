@@ -1,3 +1,7 @@
+/**
+ * @ngdoc service
+ * @name friendsService
+ */
 (function () {
     'use strict';
 
@@ -7,17 +11,30 @@
 
     function friendsService($q, $http, $window) {
         var cachedEpisodesData = null;
+        var STORAGE_KEY = 'NOW_PLAYING_EPISODE';
 
         var service = {
-            getEpisodesData: getEpisodesData,
             findEpisode: findEpisode,
             searchByTitle: searchByTitle,
-            saveNowPlayingEpisode: saveNowPlayingEpisode,
-            getNowPlayingEpisode: getNowPlayingEpisode
+            getEpisodesData: getEpisodesData,
+            getNowPlayingEpisode: getNowPlayingEpisode,
+            saveNowPlayingEpisode: saveNowPlayingEpisode
         };
 
         return service;
 
+        /**
+         * @ngdoc method
+         * @name getEpisodesData
+         * @methodOf friendsService
+         *
+         * @description
+         * Returns a promise for all episodes data. Immediately resolves
+         * with cached data if available, otherwise fetches the data from
+         * the server.
+         *
+         * @returns {Promise}
+         */
         function getEpisodesData() {
             return $q(function (resolve, reject) {
                 if (angular.isObject(cachedEpisodesData)) {
@@ -35,6 +52,20 @@
             });
         }
 
+        /**
+         * @ngdoc method
+         * @name findEpisode
+         * @methodOf friendsService
+         *
+         * @description
+         * Returns a promise for an episode that matches the given season and episode
+         * IDs.
+         *
+         * @param seasonId
+         * @param episodeId
+         *
+         * @returns {Promise}
+         */
         function findEpisode(seasonId, episodeId) {
             return $q(function (resolve, reject) {
                 getEpisodesData()
@@ -62,16 +93,36 @@
             });
         }
 
-        function saveNowPlayingEpisode(nowPlayingEpisodeData) {
-            if (angular.isObject(nowPlayingEpisodeData)) {
-                $window.localStorage.setItem('nowPlayingEpisode', JSON.stringify(nowPlayingEpisodeData));
+        /**
+         * @ngdoc method
+         * @name saveNowPlayingEpisode
+         * @methodOf friendsService
+         *
+         * @description
+         * Saves now playing episode to local storage.
+         *
+         * @param nowPlayingEpisode
+         */
+        function saveNowPlayingEpisode(nowPlayingEpisode) {
+            if (angular.isObject(nowPlayingEpisode)) {
+                $window.localStorage.setItem(STORAGE_KEY, JSON.stringify(nowPlayingEpisode));
             } else {
-                $window.localStorage.removeItem('nowPlayingEpisode');
+                $window.localStorage.removeItem(STORAGE_KEY);
             }
         }
 
+        /**
+         * @ngdoc method
+         * @name getNowPlayingEpisode
+         * @methodOf friendsService
+         *
+         * @description
+         * Gets now playing episode from the local storage.
+         *
+         * @returns {Object|null}
+         */
         function getNowPlayingEpisode() {
-            var nowPlayingEpisode = $window.localStorage.getItem('nowPlayingEpisode');
+            var nowPlayingEpisode = $window.localStorage.getItem(STORAGE_KEY);
 
             if (angular.isString(nowPlayingEpisode)) {
                 return JSON.parse(nowPlayingEpisode);
@@ -79,7 +130,19 @@
                 return null;
             }
         }
-        
+
+        /**
+         * @ngdoc method
+         * @name searchByTitle
+         * @methodOf friendsService
+         *
+         * @description
+         * Returns a promise for all episodes whose title matches the given query.
+         *
+         * @param query
+         *
+         * @returns {Promise}
+         */
         function searchByTitle(query) {
             return $q(function (resolve) {
                 service.getEpisodesData().then(function (episodesData) {

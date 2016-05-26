@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app.search')
+        .module('app')
         .component('search', searchComponent());
 
     function searchComponent() {

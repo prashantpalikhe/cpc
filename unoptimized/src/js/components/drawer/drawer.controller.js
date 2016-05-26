@@ -6,7 +6,7 @@
     'use strict';
 
     angular
-        .module('app.drawer')
+        .module('app')
         .controller('DrawerController', DrawerController);
 
     function DrawerController($element, $rootScope) {

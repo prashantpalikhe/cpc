@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app.drawer')
+        .module('app')
         .component('drawer', drawerComponent());
 
     function drawerComponent() {
