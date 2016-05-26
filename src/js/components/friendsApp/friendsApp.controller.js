@@ -58,6 +58,7 @@
 
         $scope.$on('$locationChangeSuccess', function () {
             hideMenu();
+            activate();
         });
     }
 })();
