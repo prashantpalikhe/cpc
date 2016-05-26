@@ -6,9 +6,10 @@
     max-width: 280px;
     height: 100%;
     background: white;
-    transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-104%, 0, 0);
     will-change: transform;
     z-index: 1;
+    box-shadow: 0px 19px 19px 0px rgba(0, 0, 0, 0.3), 0px 15px 6px 0px rgba(0, 0, 0, 0.22);
 }
 
 .drawer.is-animatable {
@@ -21,7 +22,6 @@
 
 .drawer.is-visible {
     transform: translate3d(0, 0, 0);
-    /*box-shadow: 0px 19px 19px 0px rgba(0, 0, 0, 0.3), 0px 15px 6px 0px rgba(0, 0, 0, 0.22);*/
 }
 
 .drawer-backdrop {
