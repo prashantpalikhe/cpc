@@ -1,0 +1,22 @@
+{
+  "name": "cpp",
+  "version": "1.0.0",
+  "description": "Cherry-pick Porto",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prashantpalikhe/cpc.git"
+  },
+  "author": "Prashant Palikhe <prashpal09@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/prashantpalikhe/cpc/issues"
+  },
+  "homepage": "https://github.com/prashantpalikhe/cpc#readme",
+  "devDependencies": {
+    "uglifyjs": "^2.4.10"
+  }
+}
