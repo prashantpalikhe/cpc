@@ -8,14 +8,15 @@
     function friendsService($q, $http, $window) {
         var cachedEpisodesData = null;
 
-        var friendsService = {
+        var service = {
             getEpisodesData: getEpisodesData,
             findEpisode: findEpisode,
+            searchByTitle: searchByTitle,
             saveCurrentPlayingEpisode: saveCurrentPlayingEpisode,
             getCurrentPlayingEpisode: getCurrentPlayingEpisode
         };
 
-        return friendsService;
+        return service;
 
         function getEpisodesData() {
             return $q(function (resolve, reject) {
@@ -77,6 +78,33 @@
             } else {
                 return null;
             }
+        }
+        
+        function searchByTitle(query) {
+            return $q(function (resolve) {
+                service.getEpisodesData().then(function (episodesData) {
+                    var filteredEpisodesData = [];
+
+                    if (angular.isString(query) && query !== '') {
+                        episodesData.forEach(function (season) {
+                            var filteredSeason = {
+                                id: season.id,
+                                episodes: season.episodes.filter(function (episode) {
+                                    return ~episode.title.toLowerCase().indexOf(query.toLowerCase());
+                                })
+                            };
+
+                            if (filteredSeason.episodes.length) {
+                                filteredEpisodesData.push(filteredSeason);
+                            }
+                        });
+
+                        resolve(filteredEpisodesData);
+                    } else {
+                        resolve(episodesData);
+                    }
+                });
+            });
         }
     }
 })();

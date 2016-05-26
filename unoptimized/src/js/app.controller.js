@@ -98,28 +98,9 @@
         }
 
         function search(query) {
-            var filteredEpisodesData = [];
-
-            if (angular.isString(query) && query !== '') {
-                episodesData.forEach(function (season) {
-                    var filteredSeason = {
-                        id: season.id,
-                        episodes: season.episodes.filter(function (episode) {
-                            return ~episode.title.toLowerCase().indexOf(query.toLowerCase());
-                        })
-                    };
-
-                    if (filteredSeason.episodes.length) {
-                        filteredEpisodesData.push(filteredSeason);
-                    }
-                });
-            } else {
-                filteredEpisodesData = episodesData;
-            }
-
-            if (filteredEpisodesData.length) {
+            friendsService.searchByTitle(query).then(function (filteredEpisodesData) {
                 vm.episodesData = filteredEpisodesData;
-            }
+            });
         }
     }
 })();
