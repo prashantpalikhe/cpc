@@ -4,7 +4,6 @@
     angular
         .module('app')
         .controller('EpisodesListController', EpisodesListController)
-        .controller('AppController', AppController)
         .controller('SingleEpisodeController', SingleEpisodeController)
         .controller('CurrentController', CurrentController);
 
@@ -39,33 +38,6 @@
                     vm.episode = episode;
                 });
         }
-    }
-
-    function AppController($element, $scope) {
-        var vm = this;
-
-        var drawer;
-
-        vm.showMenu = showMenu;
-        vm.hideMenu = hideMenu;
-
-        vm.$postLink = postLink;
-
-        function postLink() {
-            drawer = $element.find('drawer').controller('drawer');
-        }
-
-        function showMenu() {
-            drawer.showDrawer();
-        }
-
-        function hideMenu() {
-            drawer.hideDrawer();
-        }
-
-        $scope.$on('$locationChangeSuccess', function () {
-            hideMenu();
-        });
     }
 
     function EpisodesListController(friendsService) {
