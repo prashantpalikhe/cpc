@@ -13,8 +13,7 @@
             })
 
             .when('/', {
-                templateUrl: './src/views/list.html',
-                controller: 'EpisodesListController as episodesList'
+                templateUrl: './src/views/list.html'
             })
 
             .when('/current', {

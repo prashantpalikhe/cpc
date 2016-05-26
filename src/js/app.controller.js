@@ -3,7 +3,6 @@
 
     angular
         .module('app')
-        .controller('EpisodesListController', EpisodesListController)
         .controller('SingleEpisodeController', SingleEpisodeController)
         .controller('CurrentController', CurrentController);
 
@@ -37,42 +36,6 @@
                 .then(function (episode) {
                     vm.episode = episode;
                 });
-        }
-    }
-
-    function EpisodesListController(friendsService) {
-        var vm = this;
-        var episodesData;
-
-        vm.searchQuery = '';
-        vm.nowPlayingEpisode = null;
-        vm.episodesData = null;
-
-        vm.search = search;
-
-        activate();
-
-        function activate() {
-            getNowPlayingEpisode();
-            getFriendsEpisodesData();
-        }
-
-        function getNowPlayingEpisode() {
-            vm.nowPlayingEpisode = friendsService.getNowPlayingEpisode();
-        }
-
-        function getFriendsEpisodesData() {
-            friendsService
-                .getEpisodesData()
-                .then(function onEpisodesDataReceived(result) {
-                    vm.episodesData = episodesData = result;
-                });
-        }
-
-        function search(query) {
-            friendsService.searchByTitle(query).then(function (filteredEpisodesData) {
-                vm.episodesData = filteredEpisodesData;
-            });
         }
     }
 })();

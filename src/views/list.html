@@ -1,21 +1,8 @@
 <main class="main main--list">
-    <search on-query-changed="episodesList.search(query)"></search>
+    <search on-query-changed="friendsApp.search(query)"></search>
 
-    <div class="seasons">
-        <div class="current" ng-if="episodesList.nowPlayingEpisode">
-            <a class="current__trigger" ng-href="#/current">
-                Continue watching "{{ episodesList.nowPlayingEpisode.title }}"
-            </a>
-        </div>
+    <friends-now-playing-episode episode="friendsApp.nowPlayingEpisode"></friends-now-playing-episode>
 
-        <div class="season" ng-repeat="season in episodesList.episodesData">
-            <h2 class="season__title">Season {{ season.id }}</h2>
-
-            <div class="episodes">
-                <episode ng-repeat="episode in season.episodes" title="{{ episode.title }}" href="#/season/{{ season.id }}/episode/{{ episode.id }}" img="./src/img/{{ episode.id }}.png"></episode>
-            </div>
-
-        </div>
-    </div>
+    <episodes episodes-data="friendsApp.episodesData"></episodes>
 </main>
 
