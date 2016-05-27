@@ -1,6 +1,6 @@
 /**
  * @ngdoc controller
- * @name app.drawer.DrawerController
+ * @name DrawerController
  */
 (function () {
     'use strict';
@@ -72,7 +72,7 @@
         /**
          * @ngdoc method
          * @name showDrawer
-         * @methodOf app.drawer.DrawerController
+         * @methodOf DrawerController
          *
          * @description Shows the drawer by animating the drawer in.
          */
@@ -88,7 +88,7 @@
         /**
          * @ngdoc method
          * @name hideDrawer
-         * @methodOf app.drawer.DrawerController
+         * @methodOf DrawerController
          *
          * @description Hides the drawer by animating the drawer out.
          */
@@ -208,7 +208,7 @@
         /**
          * @ngdoc method
          * @name onDestroy
-         * @methodOf app.drawer.DrawerController
+         * @methodOf DrawerController
          *
          * @description Cleanup routine when the component is destroyed.
          */
