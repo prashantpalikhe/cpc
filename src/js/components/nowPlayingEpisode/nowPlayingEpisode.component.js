@@ -16,7 +16,7 @@
                 vm.startWatching = startWatching;
 
                 function startWatching() {
-                    $location.path('/current');
+                    $location.path(`/watch/${vm.episode.id}`);
                 }
             },
             template: `

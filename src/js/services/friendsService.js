@@ -16,6 +16,7 @@
         var service = {
             findEpisode: findEpisode,
             searchByTitle: searchByTitle,
+            getAllEpisodes: getAllEpisodes,
             getEpisodesData: getEpisodesData,
             getNowPlayingEpisode: getNowPlayingEpisode,
             saveNowPlayingEpisode: saveNowPlayingEpisode
@@ -58,38 +59,54 @@
          * @methodOf friendsService
          *
          * @description
-         * Returns a promise for an episode that matches the given season and episode
-         * IDs.
+         * Returns a promise for an episode for the given ID.
          *
-         * @param seasonId
          * @param episodeId
          *
          * @returns {Promise}
          */
-        function findEpisode(seasonId, episodeId) {
-            return $q(function (resolve, reject) {
-                getEpisodesData()
-                    .then(function (episodesData) {
-                        var season;
-                        var episode;
+        function findEpisode(episodeId) {
 
-                        season = episodesData.find(function (season) {
-                             return season.id === seasonId;
+            return $q(function (resolve, reject) {
+                 getAllEpisodes()
+                    .then(function (allEpisodes) {
+                        var episode = allEpisodes.find(function (episode) {
+                            return episode.id === episodeId;
                         });
 
-                        if (season) {
-                            episode = season.episodes.find(function (episode) {
-                                return episode.id === episodeId;
-                            });
-
-                            if (episode) {
-                                return resolve(episode);
-                            }
+                        if (episode) {
+                            resolve(episode);
+                        } else {
+                            reject(`No episode found by ID ${episodeId}`);
                         }
-
-                        reject(`No episode found for season ${seasonId} and episode ${episodeId}`);
                     })
-                    .catch(reject)
+                    .catch(reject);
+            });
+        }
+
+        /**
+         * @ngdoc method
+         * @name getAllEpisodes
+         * @methodOf friendsService
+         *
+         * @description
+         * Returns a promise for all the episodes data in one array.
+         *
+         * @returns {Promise}
+         */
+        function getAllEpisodes() {
+            return $q(function (resolve, reject) {
+                 getEpisodesData()
+                    .then(function (episodesData) {
+                        var allEpisodes = [];
+
+                        episodesData.forEach(function (season) {
+                            Array.prototype.push.apply(allEpisodes, season.episodes);
+                        });
+
+                        resolve(allEpisodes);
+                    })
+                    .catch(reject);
             });
         }
 
@@ -144,10 +161,10 @@
          * @returns {Promise}
          */
         function searchByTitle(query) {
-//             longRunningFunction();
-
-//             console.time('search');
-
+            //longRunningFunction();
+            //
+            //console.time('search');
+            //
             //window.performance.mark('search_start');
 
             return $q(function (resolve) {
@@ -173,8 +190,8 @@
                         resolve(episodesData);
                     }
 
-//                     console.timeEnd('search');
-
+                    //console.timeEnd('search');
+                    //
                     //window.performance.mark('search_end');
                     //window.performance.measure('search', 'search_start', 'search_end');
                 });

@@ -2,7 +2,7 @@
 
     angular
         .module('app')
-        .controller('EpisodePlayerController', EpisodePlayerController);
+        .controller(EpisodePlayerController.name, EpisodePlayerController);
 
     function EpisodePlayerController($element, friendsService) {
         var vm = this;

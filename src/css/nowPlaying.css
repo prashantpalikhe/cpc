@@ -1,0 +1,23 @@
+.current {
+    margin: 30px 0 10px;
+    text-align: center;
+}
+
+.current__trigger {
+    appearance: none;
+    -webkit-appearance: none;
+    border: none;
+    color: white;
+    text-decoration: none;
+    background: #F14B38;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 12px;
+    max-width: 85vw;
+    display: block;
+    margin: 0 auto;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}

@@ -14,7 +14,7 @@
 
                         <ul class="friends-nav__items">
                             <li class="friends-nav__item" ng-repeat="episode in season.episodes">
-                                <a class="friends-nav__item__link" ng-href="#/season/{{ season.id }}/episode/{{ episode.id }}">{{ episode.title }}</a>
+                                <a class="friends-nav__item__link" ng-href="#/watch/{{ episode.id }}">{{ episode.title }}</a>
                             </li>
                         </ul>
                     </div>
