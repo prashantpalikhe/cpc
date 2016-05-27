@@ -10,11 +10,20 @@
             bindings: {
                 episode: '<'
             },
+            controller: function ($location) {
+                var vm = this;
+
+                vm.startWatching = startWatching;
+
+                function startWatching() {
+                    $location.path('/current');
+                }
+            },
             template: `
                 <div class="current">
-                    <a class="current__trigger" ng-href="#/current">
+                    <button class="current__trigger" ng-click="$ctrl.startWatching()">
                         Continue watching "{{ $ctrl.episode.title }}"
-                    </a>
+                    </button>
                 </div>
             `
         }

@@ -146,6 +146,7 @@
             }
 
             translateX = Math.min(startOffset + deltaX, 0);
+//             translateX = startOffset + deltaX;
 
             if (direction === 'left' || direction === 'right') {
 
