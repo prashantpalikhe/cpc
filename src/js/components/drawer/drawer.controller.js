@@ -9,7 +9,7 @@
         .module('app')
         .controller('DrawerController', DrawerController);
 
-    function DrawerController($element, $rootScope) {
+    function DrawerController($element, $rootScope, $$rAF) {
         var vm = this;
 
         var element = $element[0];
@@ -119,7 +119,7 @@
 
             previousTouch = currentTouch;
 
-            requestAnimationFrame(update);
+            $$rAF(update);
         }
 
         function onTouchEnd() {
@@ -153,7 +153,7 @@
                 $drawer[0].style.transform = 'translate3d(' + translateX + 'px, 0, 0)';
                 $backdrop[0].style.opacity = (drawerWidth + translateX) / drawerWidth;
 
-                requestAnimationFrame(update);
+                $$rAF(update);
             }
         }
 
