@@ -161,12 +161,6 @@
          * @returns {Promise}
          */
         function searchByTitle(query) {
-            //longRunningFunction();
-            //
-            //console.time('search');
-            //
-            //window.performance.mark('search_start');
-
             return $q(function (resolve) {
                 service.getEpisodesData().then(function (episodesData) {
                     var filteredEpisodesData = [];
@@ -189,19 +183,8 @@
                     } else {
                         resolve(episodesData);
                     }
-
-                    //console.timeEnd('search');
-                    //
-                    //window.performance.mark('search_end');
-                    //window.performance.measure('search', 'search_start', 'search_end');
                 });
             });
-        }
-
-        function longRunningFunction() {
-            for (var i = 0; i < 990; i++) {
-                console.warn('Executing long running function...');
-            }
         }
     }
 })();
