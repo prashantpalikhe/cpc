@@ -1,19 +1,32 @@
-(function () {
-    'use strict';
+routing.$inject = ['$routeProvider'];
 
-    angular
-        .module('app')
-        .config(configureRoutes);
+export default function routing($routeProvider) {
+    $routeProvider
+        .when('/watch/:episodeId', {
+            templateUrl: './src/views/single.html',
+            controller: function SingleEpisodeController($routeParams, friendsService) {
+                var vm = this;
 
-    function configureRoutes($routeProvider) {
-        $routeProvider
-            .when('/watch/:episodeId', {
-                templateUrl: './src/views/single.html',
-                controller: 'SingleEpisodeController as singleEpisode'
-            })
+                vm.episode = null;
 
-            .when('/', {
-                templateUrl: './src/views/list.html'
-            });
-    }
-})();
+                activate();
+
+                function activate() {
+                    getEpisode();
+                }
+
+                function getEpisode() {
+                    friendsService
+                        .findEpisode($routeParams.episodeId)
+                        .then(function (episode) {
+                            vm.episode = episode;
+                        });
+                }
+            },
+            controllerAs: 'singleEpisode'
+        })
+
+        .when('/', {
+            templateUrl: './src/views/list.html'
+        });
+}

@@ -1,11 +1,6 @@
-(function () {
-    'use strict';
-
-    angular
-        .module('app')
-        .controller(FriendsAppController.name, FriendsAppController);
-
-    function FriendsAppController($element, $scope, friendsService) {
+const AppComponent = {
+    transclude: true,
+    controller: function FriendsAppController($element, $scope, friendsService) {
         var vm = this;
 
         var drawer;
@@ -60,5 +55,30 @@
             hideMenu();
             activate();
         });
-    }
-})();
+    },
+    template: `
+        <header class="header">
+            <button ng-click="$ctrl.showMenu()" class="header__btn material-icons">menu</button>
+        
+            <a class="header__logo" href="#/" title="Go to episodes list">
+                <img class="header__logo__img" src="./src/img/logo.jpg" alt="Friends logo">
+            </a>
+        </header>
+        
+        <ng-view></ng-view>
+        
+        <drawer position="left">
+            <nav class="nav">
+                <div class="nav-header">
+                    <button ng-click="$ctrl.hideMenu()" class="nav__hide-drawer material-icons">close</button>
+                </div>
+        
+                <div class="nav-body">
+                    <navigation></navigation>
+                </div>
+            </nav>
+        </drawer>
+    `
+};
+
+export default AppComponent;

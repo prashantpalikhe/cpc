@@ -1,8 +1,8 @@
 <main class="main main--list">
-    <search on-query-changed="friendsApp.search(query)"></search>
+    <search on-query-changed="$ctrl.search(query)"></search>
 
-    <now-playing-episode ng-if="friendsApp.nowPlayingEpisode" episode="friendsApp.nowPlayingEpisode"></now-playing-episode>
+    <now-playing-episode ng-if="friendsApp.nowPlayingEpisode" episode="$ctrl.nowPlayingEpisode"></now-playing-episode>
 
-    <episodes episodes-data="friendsApp.episodesData"></episodes>
+    <episodes episodes-data="$ctrl.episodesData"></episodes>
 </main>
 
