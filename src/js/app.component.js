@@ -67,7 +67,7 @@ const AppComponent = {
         
         <ng-view></ng-view>
         
-        <drawer position="left">
+        <drawer>
             <nav class="nav">
                 <div class="nav-header">
                     <button ng-click="$ctrl.hideMenu()" class="nav__hide-drawer material-icons">close</button>

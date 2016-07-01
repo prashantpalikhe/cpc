@@ -1,9 +1,8 @@
-import angular from 'angular';
+import './navigation.css';
+import controller from './navigation.controller'
 
-const navigation = angular
-    .module('navigation', [])
-    .component('navigation', {
-        template: `
+const NavigationComponent = {
+    template: `
             <div class="friends-nav">
                 <div ng-repeat="season in $ctrl.episodesData" ng-if="$ctrl.episodesData">
                     <h2 class="friends-nav__title">Season {{ season.id }}</h2>
@@ -16,16 +15,7 @@ const navigation = angular
                 </div>
             </div>
         `,
-        controller: function (friendsService) {
-            var vm = this;
+    controller
+};
 
-            vm.episodesData = null;
-
-            friendsService.getEpisodesData().then(function (episodesData) {
-                vm.episodesData = episodesData;
-            });
-        }
-    })
-    .name;
-
-export default navigation;
+export default NavigationComponent;

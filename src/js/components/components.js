@@ -4,7 +4,7 @@ import Episode from './episode';
 import Episodes from  './episodes';
 import Navigation from './navigation';
 import Search from './search';
-import NowPlayingEpisode from './nowPlayingEpisode';
+import NowPlayingEpisode from './nowPlaying';
 import EpisodePlayer from './episodePlayer';
 
 const components = angular
