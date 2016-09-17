@@ -1,4 +1,5 @@
 import angular from 'angular';
+import App from './app';
 import Drawer from './drawer';
 import Episode from './episode';
 import Episodes from  './episodes';
@@ -9,6 +10,7 @@ import EpisodePlayer from './episodePlayer';
 
 const components = angular
     .module('app.components', [
+        App,
         Drawer,
         Episode,
         Episodes,

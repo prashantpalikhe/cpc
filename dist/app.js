@@ -16,17 +16,13 @@ webpackJsonp([0,3],[
 
 	var _app2 = _interopRequireDefault(_app);
 
-	var _app3 = __webpack_require__(6);
-
-	var _app4 = _interopRequireDefault(_app3);
-
-	var _components = __webpack_require__(7);
+	var _components = __webpack_require__(6);
 
 	var _components2 = _interopRequireDefault(_components);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	_angular2.default.module('app', ['ngRoute', _components2.default]).config(_app2.default).component('app', _app4.default).factory('friendsService', friendsService);
+	_angular2.default.module('friendsflix', ['ngRoute', _components2.default]).config(_app2.default).factory('friendsService', friendsService);
 
 	function friendsService($q, $http, $window) {
 	    var STORAGE_KEY = 'NOW_PLAYING_EPISODE';
@@ -60,7 +56,7 @@ webpackJsonp([0,3],[
 	            if (_angular2.default.isObject(cachedEpisodesData)) {
 	                resolve(cachedEpisodesData);
 	            } else {
-	                $http.get('./src/data/episodes.json').then(function onEpisodesDataReceived(response) {
+	                $http.get('/data/episodes.json').then(function onEpisodesDataReceived(response) {
 	                    cachedEpisodesData = response.data;
 
 	                    resolve(cachedEpisodesData);
@@ -218,7 +214,7 @@ webpackJsonp([0,3],[
 
 	function routing($routeProvider) {
 	    $routeProvider.when('/watch/:episodeId', {
-	        templateUrl: './src/views/single.html',
+	        template: '\n                <main class="main">\n                    <episode-player ng-if="singleEpisode.episode" episode="singleEpisode.episode"></episode-player>\n                </main>\n            ',
 	        controller: function SingleEpisodeController($routeParams, friendsService) {
 	            var vm = this;
 
@@ -238,19 +234,98 @@ webpackJsonp([0,3],[
 	        },
 	        controllerAs: 'singleEpisode'
 	    }).when('/', {
-	        templateUrl: './src/views/list.html'
+	        template: '\n                <main class="main main--list">\n                    <search on-query-changed="$ctrl.search(query)"></search>\n                \n                    <now-playing ng-if="$ctrl.nowPlayingEpisode" episode="$ctrl.nowPlayingEpisode"></now-playing>\n                \n                    <episodes episodes-data="$ctrl.episodesData"></episodes>\n                </main>\n            '
 	    });
 	}
 
 /***/ },
 /* 6 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
+
+	var _angular = __webpack_require__(1);
+
+	var _angular2 = _interopRequireDefault(_angular);
+
+	var _app = __webpack_require__(7);
+
+	var _app2 = _interopRequireDefault(_app);
+
+	var _drawer = __webpack_require__(13);
+
+	var _drawer2 = _interopRequireDefault(_drawer);
+
+	var _episode = __webpack_require__(18);
+
+	var _episode2 = _interopRequireDefault(_episode);
+
+	var _episodes = __webpack_require__(22);
+
+	var _episodes2 = _interopRequireDefault(_episodes);
+
+	var _navigation = __webpack_require__(23);
+
+	var _navigation2 = _interopRequireDefault(_navigation);
+
+	var _search = __webpack_require__(28);
+
+	var _search2 = _interopRequireDefault(_search);
+
+	var _nowPlaying = __webpack_require__(32);
+
+	var _nowPlaying2 = _interopRequireDefault(_nowPlaying);
+
+	var _episodePlayer = __webpack_require__(37);
+
+	var _episodePlayer2 = _interopRequireDefault(_episodePlayer);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var components = _angular2.default.module('app.components', [_app2.default, _drawer2.default, _episode2.default, _episodes2.default, _navigation2.default, _search2.default, _nowPlaying2.default, _episodePlayer2.default]).name;
+
+	exports.default = components;
+
+/***/ },
+/* 7 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _angular = __webpack_require__(1);
+
+	var _angular2 = _interopRequireDefault(_angular);
+
+	var _app = __webpack_require__(8);
+
+	var _app2 = _interopRequireDefault(_app);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var app = _angular2.default.module('app', []).component('app', _app2.default).name;
+
+	exports.default = app;
+
+/***/ },
+/* 8 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	__webpack_require__(9);
+
 	var AppComponent = {
 	    transclude: true,
 	    controller: function FriendsAppController($element, $scope, friendsService) {
@@ -307,127 +382,29 @@ webpackJsonp([0,3],[
 	            activate();
 	        });
 	    },
-	    template: '\n        <header class="header">\n            <button ng-click="$ctrl.showMenu()" class="header__btn material-icons">menu</button>\n        \n            <a class="header__logo" href="#/" title="Go to episodes list">\n                <img class="header__logo__img" src="./src/img/logo.jpg" alt="Friends logo">\n            </a>\n        </header>\n        \n        <ng-view></ng-view>\n        \n        <drawer>\n            <nav class="nav">\n                <div class="nav-header">\n                    <button ng-click="$ctrl.hideMenu()" class="nav__hide-drawer material-icons">close</button>\n                </div>\n        \n                <div class="nav-body">\n                    <navigation></navigation>\n                </div>\n            </nav>\n        </drawer>\n    '
+	    template: '\n        <header class="header">\n            <button ng-click="$ctrl.showMenu()" class="header__btn material-icons">menu</button>\n        \n            <a class="header__logo" href="#/" title="Go to episodes list">\n                <img class="header__logo__img" src="/img/logo.jpg" alt="Friends logo">\n            </a>\n        </header>\n        \n        <ng-view></ng-view>\n        \n        <drawer>\n            <nav class="nav">\n                <div class="nav-header">\n                    <button ng-click="$ctrl.hideMenu()" class="nav__hide-drawer material-icons">close</button>\n                </div>\n        \n                <div class="nav-body">\n                    <navigation></navigation>\n                </div>\n            </nav>\n        </drawer>\n    '
 	};
 
 	exports.default = AppComponent;
 
 /***/ },
-/* 7 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _angular = __webpack_require__(1);
-
-	var _angular2 = _interopRequireDefault(_angular);
-
-	var _drawer = __webpack_require__(8);
-
-	var _drawer2 = _interopRequireDefault(_drawer);
-
-	var _episode = __webpack_require__(15);
-
-	var _episode2 = _interopRequireDefault(_episode);
-
-	var _episodes = __webpack_require__(19);
-
-	var _episodes2 = _interopRequireDefault(_episodes);
-
-	var _navigation = __webpack_require__(20);
-
-	var _navigation2 = _interopRequireDefault(_navigation);
-
-	var _search = __webpack_require__(25);
-
-	var _search2 = _interopRequireDefault(_search);
-
-	var _nowPlaying = __webpack_require__(29);
-
-	var _nowPlaying2 = _interopRequireDefault(_nowPlaying);
-
-	var _episodePlayer = __webpack_require__(34);
-
-	var _episodePlayer2 = _interopRequireDefault(_episodePlayer);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var components = _angular2.default.module('app.components', [_drawer2.default, _episode2.default, _episodes2.default, _navigation2.default, _search2.default, _nowPlaying2.default, _episodePlayer2.default]).name;
-
-	exports.default = components;
-
-/***/ },
-/* 8 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _angular = __webpack_require__(1);
-
-	var _angular2 = _interopRequireDefault(_angular);
-
-	var _drawer = __webpack_require__(9);
-
-	var _drawer2 = _interopRequireDefault(_drawer);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var drawer = _angular2.default.module('drawer', []).component('drawer', _drawer2.default).name;
-
-	exports.default = drawer;
-
-/***/ },
 /* 9 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	__webpack_require__(10);
-
-	var _drawer = __webpack_require__(14);
-
-	var _drawer2 = _interopRequireDefault(_drawer);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var DrawerComponent = {
-	    transclude: true,
-	    controller: _drawer2.default,
-	    template: '\n        <div class="drawer-backdrop"></div>\n        <div class="drawer-edge"></div>\n        <aside class="drawer" ng-transclude></aside>\n    '
-	};
-
-	exports.default = DrawerComponent;
-
-/***/ },
-/* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(11);
+	var content = __webpack_require__(10);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(13)(content, {});
+	var update = __webpack_require__(12)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/postcss-loader/index.js!./drawer.css", function() {
-				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/postcss-loader/index.js!./drawer.css");
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/postcss-loader/index.js!./app.css", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/postcss-loader/index.js!./app.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -437,21 +414,21 @@ webpackJsonp([0,3],[
 	}
 
 /***/ },
-/* 11 */
+/* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(12)();
+	exports = module.exports = __webpack_require__(11)();
 	// imports
 
 
 	// module
-	exports.push([module.id, ".drawer {\n    position: fixed;\n    top: 0;\n    left: 0;\n    width: 80%;\n    max-width: 280px;\n    height: 100%;\n    background: white;\n    -webkit-transform: translate3d(-104%, 0, 0);\n            transform: translate3d(-104%, 0, 0);\n    will-change: transform;\n    z-index: 1;\n    box-shadow: 0px 19px 19px 0px rgba(0, 0, 0, 0.3), 0px 15px 6px 0px rgba(0, 0, 0, 0.22);\n}\n\n.drawer.is-animatable {\n    -webkit-transition: 0.13s -webkit-transform cubic-bezier(0, 0, 0.3, 1);\n    transition: 0.13s -webkit-transform cubic-bezier(0, 0, 0.3, 1);\n    transition: 0.13s transform cubic-bezier(0, 0, 0.3, 1);\n    transition: 0.13s transform cubic-bezier(0, 0, 0.3, 1), 0.13s -webkit-transform cubic-bezier(0, 0, 0.3, 1);\n}\n\n.drawer.is-visible.is-animatable {\n    -webkit-transition: 0.35s -webkit-transform cubic-bezier(0, 0, 0.3, 1);\n    transition: 0.35s -webkit-transform cubic-bezier(0, 0, 0.3, 1);\n    transition: 0.35s transform cubic-bezier(0, 0, 0.3, 1);\n    transition: 0.35s transform cubic-bezier(0, 0, 0.3, 1), 0.35s -webkit-transform cubic-bezier(0, 0, 0.3, 1);\n}\n\n.drawer.is-visible {\n    -webkit-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0);\n}\n\n.drawer-backdrop {\n    position: fixed;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    background: rgba(0, 0, 0, 0.55);\n    opacity: 0;\n    pointer-events: none;\n    -webkit-transform: translateZ(0);\n            transform: translateZ(0);\n    will-change: transform;\n}\n\n.drawer-backdrop.is-animatable {\n    -webkit-transition: 0.13s opacity cubic-bezier(0, 0, 0.3, 1);\n    transition: 0.13s opacity cubic-bezier(0, 0, 0.3, 1);;\n}\n\n.drawer-backdrop.is-visible.is-animatable {\n    -webkit-transition: 0.35s opacity cubic-bezier(0, 0, 0.3, 1);\n    transition: 0.35s opacity cubic-bezier(0, 0, 0.3, 1);\n}\n\n.drawer-backdrop.is-visible {\n    opacity: 1;\n    pointer-events: auto;\n}\n\n.drawer-edge {\n    position: fixed;\n    top: 0;\n    left: 0;\n    width: 20px;\n    height: 100%;\n}", ""]);
+	exports.push([module.id, "*, *:before, *:after {\n    box-sizing: border-box;\n    -webkit-tap-highlight-color: transparent;\n}\n\nhtml, body {\n    padding: 0;\n    margin: 0;\n    background: #FAFAFA;\n    font-family: Arial, sans-serif;\n    height: 100%;\n    width: 100%;\n}\n\nbody {\n    color: white;\n    background: #000;\n    overflow: hidden;\n    -webkit-font-smoothing: antialiased;\n}\n\nmain {\n    position: absolute;\n    top: 56px;\n    right: 0;\n    bottom: 0;\n    left: 0;\n    width: 100%;\n    overflow-x: hidden;\n    overflow-y: auto;\n    background: #000;\n    /*background: #222;*/\n    -webkit-overflow-scrolling: touch;\n}\n\n.main--list {\n    top: 112px;\n}\n\n[ng\\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {\n    display: none !important;\n}\n\n/*@font-face {*/\n    /*font-family: 'Material Icons';*/\n    /*font-style: normal;*/\n    /*font-weight: 400;*/\n    /*src: url(../../font/MaterialIcons-Regular.woff2) format('woff2');*/\n/*}*/\n\n.material-icons {\n    font-family: 'Material Icons';\n    font-weight: normal;\n    font-style: normal;\n    font-size: 24px;\n    line-height: 1;\n    letter-spacing: normal;\n    text-transform: none;\n    display: inline-block;\n    white-space: nowrap;\n    word-wrap: normal;\n    direction: ltr;\n    -webkit-font-feature-settings: 'liga';\n    -webkit-font-smoothing: antialiased;\n}\n\n.header {\n    position: fixed;\n    top: 0;\n    width: 100%;\n    height: 56px;\n    background: #000;\n    color: #FFF;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: row;\n            flex-direction: row;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    padding: 0 16px;\n}\n\n.header__show-drawer, .nav__hide-drawer {\n    background: none;\n    border: none;\n    width: 24px;\n    height: 24px;\n    padding: 0;\n    margin: 0;\n    color: #FFF;\n}\n\n.nav-header {\n    padding: 16px;\n    height: 100px;\n    background: #000;\n}\n\n.header__btn {\n    margin: 0;\n    padding: 0;\n    background: none;\n    outline: none;\n    border: none;\n    color: white;\n}\n\n.header__logo {\n    position: absolute;\n    left: 50%;\n    top: 50%;\n    -webkit-transform: translate(-50%, -50%);\n            transform: translate(-50%, -50%);\n}\n\n.header__logo__img {\n    display: block;\n    height: 35px;\n    width: auto;\n}\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 12 */
+/* 11 */
 /***/ function(module, exports) {
 
 	/*
@@ -507,7 +484,7 @@ webpackJsonp([0,3],[
 
 
 /***/ },
-/* 13 */
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -759,7 +736,97 @@ webpackJsonp([0,3],[
 
 
 /***/ },
+/* 13 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _angular = __webpack_require__(1);
+
+	var _angular2 = _interopRequireDefault(_angular);
+
+	var _drawer = __webpack_require__(14);
+
+	var _drawer2 = _interopRequireDefault(_drawer);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var drawer = _angular2.default.module('drawer', []).component('drawer', _drawer2.default).name;
+
+	exports.default = drawer;
+
+/***/ },
 /* 14 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	__webpack_require__(15);
+
+	var _drawer = __webpack_require__(17);
+
+	var _drawer2 = _interopRequireDefault(_drawer);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var DrawerComponent = {
+	    transclude: true,
+	    controller: _drawer2.default,
+	    template: '\n        <div class="drawer-backdrop"></div>\n        <div class="drawer-edge"></div>\n        <aside class="drawer" ng-transclude></aside>\n    '
+	};
+
+	exports.default = DrawerComponent;
+
+/***/ },
+/* 15 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(16);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(12)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/postcss-loader/index.js!./drawer.css", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/postcss-loader/index.js!./drawer.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 16 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(11)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".drawer {\n    position: fixed;\n    top: 0;\n    left: 0;\n    width: 80%;\n    max-width: 280px;\n    height: 100%;\n    background: white;\n    -webkit-transform: translate3d(-104%, 0, 0);\n            transform: translate3d(-104%, 0, 0);\n    will-change: transform;\n    z-index: 1;\n    box-shadow: 0px 19px 19px 0px rgba(0, 0, 0, 0.3), 0px 15px 6px 0px rgba(0, 0, 0, 0.22);\n}\n\n.drawer.is-animatable {\n    -webkit-transition: 0.13s -webkit-transform cubic-bezier(0, 0, 0.3, 1);\n    transition: 0.13s -webkit-transform cubic-bezier(0, 0, 0.3, 1);\n    transition: 0.13s transform cubic-bezier(0, 0, 0.3, 1);\n    transition: 0.13s transform cubic-bezier(0, 0, 0.3, 1), 0.13s -webkit-transform cubic-bezier(0, 0, 0.3, 1);\n}\n\n.drawer.is-visible.is-animatable {\n    -webkit-transition: 0.35s -webkit-transform cubic-bezier(0, 0, 0.3, 1);\n    transition: 0.35s -webkit-transform cubic-bezier(0, 0, 0.3, 1);\n    transition: 0.35s transform cubic-bezier(0, 0, 0.3, 1);\n    transition: 0.35s transform cubic-bezier(0, 0, 0.3, 1), 0.35s -webkit-transform cubic-bezier(0, 0, 0.3, 1);\n}\n\n.drawer.is-visible {\n    -webkit-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0);\n}\n\n.drawer-backdrop {\n    position: fixed;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 100%;\n    background: rgba(0, 0, 0, 0.55);\n    opacity: 0;\n    pointer-events: none;\n    -webkit-transform: translateZ(0);\n            transform: translateZ(0);\n    will-change: transform;\n}\n\n.drawer-backdrop.is-animatable {\n    -webkit-transition: 0.13s opacity cubic-bezier(0, 0, 0.3, 1);\n    transition: 0.13s opacity cubic-bezier(0, 0, 0.3, 1);;\n}\n\n.drawer-backdrop.is-visible.is-animatable {\n    -webkit-transition: 0.35s opacity cubic-bezier(0, 0, 0.3, 1);\n    transition: 0.35s opacity cubic-bezier(0, 0, 0.3, 1);\n}\n\n.drawer-backdrop.is-visible {\n    opacity: 1;\n    pointer-events: auto;\n}\n\n.drawer-edge {\n    position: fixed;\n    top: 0;\n    left: 0;\n    width: 20px;\n    height: 100%;\n}", ""]);
+
+	// exports
+
+
+/***/ },
+/* 17 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -991,7 +1058,7 @@ webpackJsonp([0,3],[
 	exports.default = DrawerController;
 
 /***/ },
-/* 15 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1004,7 +1071,7 @@ webpackJsonp([0,3],[
 
 	var _angular2 = _interopRequireDefault(_angular);
 
-	var _episode = __webpack_require__(16);
+	var _episode = __webpack_require__(19);
 
 	var _episode2 = _interopRequireDefault(_episode);
 
@@ -1015,7 +1082,7 @@ webpackJsonp([0,3],[
 	exports.default = episode;
 
 /***/ },
-/* 16 */
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1024,7 +1091,7 @@ webpackJsonp([0,3],[
 	    value: true
 	});
 
-	__webpack_require__(17);
+	__webpack_require__(20);
 
 	var EpisodeComponent = {
 	    bindings: {
@@ -1038,23 +1105,23 @@ webpackJsonp([0,3],[
 	exports.default = EpisodeComponent;
 
 /***/ },
-/* 17 */
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(18);
+	var content = __webpack_require__(21);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(13)(content, {});
+	var update = __webpack_require__(12)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/postcss-loader/index.js!./episode.css", function() {
-				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/postcss-loader/index.js!./episode.css");
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/postcss-loader/index.js!./episode.css", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/postcss-loader/index.js!./episode.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -1064,10 +1131,10 @@ webpackJsonp([0,3],[
 	}
 
 /***/ },
-/* 18 */
+/* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(12)();
+	exports = module.exports = __webpack_require__(11)();
 	// imports
 
 
@@ -1078,7 +1145,7 @@ webpackJsonp([0,3],[
 
 
 /***/ },
-/* 19 */
+/* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1097,13 +1164,13 @@ webpackJsonp([0,3],[
 	    bindings: {
 	        episodesData: '<'
 	    },
-	    template: '\n            <div class="season" ng-repeat="season in $ctrl.episodesData">\n                <h2 class="season__title">Season {{ season.id }}</h2>\n\n                <div class="episodes">\n                    <episode ng-repeat="episode in season.episodes" title="{{ episode.title }}" href="#/watch/{{ episode.id }}" img="./src/img/{{ episode.id }}.png"></episode>\n                </div>\n            </div>\n        '
+	    template: '\n            <div class="season" ng-repeat="season in $ctrl.episodesData">\n                <h2 class="season__title">Season {{ season.id }}</h2>\n\n                <div class="episodes">\n                    <episode ng-repeat="episode in season.episodes" title="{{ episode.title }}" href="#/watch/{{ episode.id }}" img="/img/{{ episode.id }}.png"></episode>\n                </div>\n            </div>\n        '
 	}).name;
 
 	exports.default = episodes;
 
 /***/ },
-/* 20 */
+/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1116,7 +1183,7 @@ webpackJsonp([0,3],[
 
 	var _angular2 = _interopRequireDefault(_angular);
 
-	var _navigation = __webpack_require__(21);
+	var _navigation = __webpack_require__(24);
 
 	var _navigation2 = _interopRequireDefault(_navigation);
 
@@ -1127,7 +1194,7 @@ webpackJsonp([0,3],[
 	exports.default = navigation;
 
 /***/ },
-/* 21 */
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1136,9 +1203,9 @@ webpackJsonp([0,3],[
 	    value: true
 	});
 
-	__webpack_require__(22);
+	__webpack_require__(25);
 
-	var _navigation = __webpack_require__(24);
+	var _navigation = __webpack_require__(27);
 
 	var _navigation2 = _interopRequireDefault(_navigation);
 
@@ -1152,23 +1219,23 @@ webpackJsonp([0,3],[
 	exports.default = NavigationComponent;
 
 /***/ },
-/* 22 */
+/* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(23);
+	var content = __webpack_require__(26);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(13)(content, {});
+	var update = __webpack_require__(12)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/postcss-loader/index.js!./navigation.css", function() {
-				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/postcss-loader/index.js!./navigation.css");
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/postcss-loader/index.js!./navigation.css", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/postcss-loader/index.js!./navigation.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -1178,10 +1245,10 @@ webpackJsonp([0,3],[
 	}
 
 /***/ },
-/* 23 */
+/* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(12)();
+	exports = module.exports = __webpack_require__(11)();
 	// imports
 
 
@@ -1192,7 +1259,7 @@ webpackJsonp([0,3],[
 
 
 /***/ },
-/* 24 */
+/* 27 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -1213,7 +1280,7 @@ webpackJsonp([0,3],[
 	exports.default = NavigationController;
 
 /***/ },
-/* 25 */
+/* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1226,7 +1293,7 @@ webpackJsonp([0,3],[
 
 	var _angular2 = _interopRequireDefault(_angular);
 
-	var _search = __webpack_require__(26);
+	var _search = __webpack_require__(29);
 
 	var _search2 = _interopRequireDefault(_search);
 
@@ -1235,67 +1302,6 @@ webpackJsonp([0,3],[
 	var search = _angular2.default.module('search', []).component('search', _search2.default).name;
 
 	exports.default = search;
-
-/***/ },
-/* 26 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	__webpack_require__(27);
-
-	var SearchComponent = {
-	    bindings: {
-	        onQueryChanged: '&'
-	    },
-	    template: '\n        <div class="search">\n            <input class="search__input" type="search" placeholder="Search by title..." ng-model="$ctrl.query" ng-change="$ctrl.onQueryChanged({query: $ctrl.query})" />\n        </div>\n    '
-	};
-
-	exports.default = SearchComponent;
-
-/***/ },
-/* 27 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(28);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(13)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/postcss-loader/index.js!./search.css", function() {
-				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/postcss-loader/index.js!./search.css");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 28 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(12)();
-	// imports
-
-
-	// module
-	exports.push([module.id, ".search {\n    position: fixed;\n    top: 56px;\n    width: 100%;\n}\n\n.search__input {\n    border: none;\n    width: 100%;\n    padding: 15px;\n    height: 56px;\n    font-size: 12px;\n    line-height: 28px;\n}\n\n.search__input:focus {\n    outline: none;\n}", ""]);
-
-	// exports
-
 
 /***/ },
 /* 29 */
@@ -1307,11 +1313,72 @@ webpackJsonp([0,3],[
 	    value: true
 	});
 
+	__webpack_require__(30);
+
+	var SearchComponent = {
+	    bindings: {
+	        onQueryChanged: '&'
+	    },
+	    template: '\n        <div class="search">\n            <input class="search__input" type="search" placeholder="Search by title..." ng-model="$ctrl.query" ng-change="$ctrl.onQueryChanged({query: $ctrl.query})" />\n        </div>\n    '
+	};
+
+	exports.default = SearchComponent;
+
+/***/ },
+/* 30 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(31);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(12)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/postcss-loader/index.js!./search.css", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/postcss-loader/index.js!./search.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 31 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(11)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".search {\n    position: fixed;\n    top: 56px;\n    width: 100%;\n}\n\n.search__input {\n    border: none;\n    width: 100%;\n    padding: 15px;\n    height: 56px;\n    font-size: 12px;\n    line-height: 28px;\n}\n\n.search__input:focus {\n    outline: none;\n}", ""]);
+
+	// exports
+
+
+/***/ },
+/* 32 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
 	var _angular = __webpack_require__(1);
 
 	var _angular2 = _interopRequireDefault(_angular);
 
-	var _nowPlaying = __webpack_require__(30);
+	var _nowPlaying = __webpack_require__(33);
 
 	var _nowPlaying2 = _interopRequireDefault(_nowPlaying);
 
@@ -1322,7 +1389,7 @@ webpackJsonp([0,3],[
 	exports.default = nowPlaying;
 
 /***/ },
-/* 30 */
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1331,9 +1398,9 @@ webpackJsonp([0,3],[
 	    value: true
 	});
 
-	__webpack_require__(31);
+	__webpack_require__(34);
 
-	var _nowPlaying = __webpack_require__(33);
+	var _nowPlaying = __webpack_require__(36);
 
 	var _nowPlaying2 = _interopRequireDefault(_nowPlaying);
 
@@ -1350,23 +1417,23 @@ webpackJsonp([0,3],[
 	exports.default = NowPlayingComponent;
 
 /***/ },
-/* 31 */
+/* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(32);
+	var content = __webpack_require__(35);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(13)(content, {});
+	var update = __webpack_require__(12)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/postcss-loader/index.js!./nowPlaying.css", function() {
-				var newContent = require("!!./../../../../node_modules/css-loader/index.js!./../../../../node_modules/postcss-loader/index.js!./nowPlaying.css");
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/postcss-loader/index.js!./nowPlaying.css", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/postcss-loader/index.js!./nowPlaying.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -1376,10 +1443,10 @@ webpackJsonp([0,3],[
 	}
 
 /***/ },
-/* 32 */
+/* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(12)();
+	exports = module.exports = __webpack_require__(11)();
 	// imports
 
 
@@ -1390,7 +1457,7 @@ webpackJsonp([0,3],[
 
 
 /***/ },
-/* 33 */
+/* 36 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -1413,7 +1480,7 @@ webpackJsonp([0,3],[
 	exports.default = NowPlayingController;
 
 /***/ },
-/* 34 */
+/* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';

@@ -12,7 +12,7 @@ const PATHS = {
 
 const config = {
     entry: {
-        app: `${PATHS.app}/js`,
+        app: `${PATHS.app}`,
         vendor: Object.keys(pkg.dependencies),
         html: `${PATHS.app}/index.html`
     },
@@ -22,16 +22,9 @@ const config = {
         filename: '[name].js'
     },
     devServer: {
-        // Enable history API fallback so HTML5 History API based
-        // routing works. This is a good default that will come
-        // in handy in more complicated setups.
         historyApiFallback: true,
-
         inline: true,
-
-        // Display only errors to reduce the amount of output.
         stats: 'errors-only',
-
         host: process.env.HOST, // Defaults to `localhost`
         port: process.env.PORT, // Defaults to 8080
         contentBase: PATHS.dist,

@@ -1,3 +1,5 @@
+import './app.css';
+
 const AppComponent = {
     transclude: true,
     controller: function FriendsAppController($element, $scope, friendsService) {

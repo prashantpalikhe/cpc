@@ -1,16 +1,14 @@
 import angular from 'angular';
 import angularRouter from 'angular-route';
-import routing from './app.routes';
-import AppComponent from './app.component';
-import Components from './components/components';
+import routes from './app.routes';
+import Components from './components';
 
 angular
-    .module('app', [
+    .module('friendsflix', [
         'ngRoute',
         Components
     ])
-    .config(routing)
-    .component('app', AppComponent)
+    .config(routes)
     .factory('friendsService', friendsService);
 
 function friendsService($q, $http, $window) {
