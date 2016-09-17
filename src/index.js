@@ -47,7 +47,7 @@ function friendsService($q, $http, $window) {
                 
             } else {
                 $http
-                    .get('./src/data/episodes.json')
+                    .get('/data/episodes.json')
                     .then(function onEpisodesDataReceived(response) {
                         cachedEpisodesData = response.data;
 

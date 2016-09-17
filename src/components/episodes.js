@@ -11,7 +11,7 @@ const episodes = angular
                 <h2 class="season__title">Season {{ season.id }}</h2>
 
                 <div class="episodes">
-                    <episode ng-repeat="episode in season.episodes" title="{{ episode.title }}" href="#/watch/{{ episode.id }}" img="./src/img/{{ episode.id }}.png"></episode>
+                    <episode ng-repeat="episode in season.episodes" title="{{ episode.title }}" href="#/watch/{{ episode.id }}" img="/img/{{ episode.id }}.png"></episode>
                 </div>
             </div>
         `

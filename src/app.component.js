@@ -61,7 +61,7 @@ const AppComponent = {
             <button ng-click="$ctrl.showMenu()" class="header__btn material-icons">menu</button>
         
             <a class="header__logo" href="#/" title="Go to episodes list">
-                <img class="header__logo__img" src="./src/img/logo.jpg" alt="Friends logo">
+                <img class="header__logo__img" src="/img/logo.jpg" alt="Friends logo">
             </a>
         </header>
         

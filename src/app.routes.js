@@ -3,7 +3,7 @@ routing.$inject = ['$routeProvider'];
 export default function routing($routeProvider) {
     $routeProvider
         .when('/watch/:episodeId', {
-            templateUrl: './src/views/single.html',
+            templateUrl: '/views/single.html',
             controller: function SingleEpisodeController($routeParams, friendsService) {
                 var vm = this;
 
@@ -27,6 +27,6 @@ export default function routing($routeProvider) {
         })
 
         .when('/', {
-            templateUrl: './src/views/list.html'
+            templateUrl: '/views/list.html'
         });
 }

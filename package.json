@@ -1,36 +1,45 @@
 {
-  "name": "friendsflix",
-  "version": "1.0.0",
-  "description": "Netflix like Friends app",
-  "main": "index.js",
-  "dependencies": {},
-  "devDependencies": {
-    "angular": "^1.5.7",
-    "angular-route": "^1.5.7",
-    "babel-core": "^6.10.4",
-    "babel-loader": "^6.2.4",
-    "babel-preset-es2015": "^6.9.0",
-    "css-loader": "^0.23.1",
-    "style-loader": "^0.13.1",
-    "webpack": "^1.13.1",
-    "webpack-dev-server": "^1.14.1"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "webpack-dev-server"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/prashantpalikhe/cpc.git"
-  },
-  "keywords": [
-    "Friends",
-    "Netflix"
-  ],
-  "author": "Prashant Palikhe <prashpal09@gmail.com>",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/prashantpalikhe/cpc/issues"
-  },
-  "homepage": "https://github.com/prashantpalikhe/cpc#readme"
+    "name": "friendsflix",
+    "version": "1.0.0",
+    "description": "Netflix like Friends app",
+    "main": "index.js",
+    "dependencies": {
+        "angular": "^1.5.8",
+        "angular-route": "^1.5.8"
+    },
+    "devDependencies": {
+        "autoprefixer": "^6.4.0",
+        "css-loader": "^0.23.1",
+        "style-loader": "^0.13.1",
+        "babel-core": "^6.14.0",
+        "babel-loader": "^6.2.5",
+        "babel-preset-es2015": "^6.14.0",
+        "webpack": "^1.13.2",
+        "webpack-dev-server": "^1.15.2",
+        "file-loader": "^0.9.0",
+        "postcss-loader": "^0.9.1",
+        "precss": "^1.4.0",
+        "style-loader": "^0.13.1",
+        "webpack": "^1.13.1",
+        "webpack-dev-server": "^1.14.1",
+        "webpack-validator": "^2.2.7"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "serve": "webpack-dev-server"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/prashantpalikhe/cpc.git"
+    },
+    "keywords": [
+        "Friends",
+        "Netflix"
+    ],
+    "author": "Prashant Palikhe <prashpal09@gmail.com>",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/prashantpalikhe/cpc/issues"
+    },
+    "homepage": "https://github.com/prashantpalikhe/cpc#readme"
 }
