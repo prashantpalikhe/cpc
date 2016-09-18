@@ -21,7 +21,7 @@
             },
             template: `
                 <div class="current">
-                    <button class="current__trigger" ng-click="$ctrl.startWatching()">
+                    <button class="current__trigger" mg-click="$ctrl.startWatching()">
                         Continue watching "{{ $ctrl.episode.title }}"
                     </button>
                 </div>

@@ -30,10 +30,11 @@ main {
     width: 100%;
     overflow-x: hidden;
     overflow-y: auto;
-    background: #000;
-    /*background: #222;*/
+    background: #444;
     -webkit-overflow-scrolling: touch;
 }
+
+main.main.main--list.ng-scope {}
 
 .main--list {
     top: 112px;
@@ -77,3 +78,5 @@ main {
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
     display: none !important;
 }
+
+img.episode__img {}

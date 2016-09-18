@@ -42,6 +42,8 @@
             DRAWER_HIDDEN: 'drawer.hidden'
         };
 
+        var rafId;
+
         vm.showDrawer = showDrawer;
         vm.hideDrawer = hideDrawer;
         vm.$onDestroy = onDestroy;
@@ -102,9 +104,11 @@
         }
 
         function onTouchStart(event) {
-            disableAnimation();
+            update();
 
+            disableAnimation();
             startTouch = event.touches[0];
+
             previousTouch = startTouch;
 
             startOffset = $drawer[0].getBoundingClientRect().left;
@@ -118,8 +122,6 @@
             direction = getSwipeDirection(previousTouch, currentTouch);
 
             previousTouch = currentTouch;
-
-            requestAnimationFrame(update);
         }
 
         function onTouchEnd() {
@@ -135,25 +137,28 @@
             }
 
             deltaX = 0;
+
+            rafId && cancelAnimationFrame(rafId);
         }
 
         /**
          * Prepares another frame
          */
         function update() {
+            rafId && cancelAnimationFrame(rafId);
+
+            rafId = requestAnimationFrame(update);
+
             if (!deltaX) {
                 return;
             }
 
-            translateX = Math.min(startOffset + deltaX, 0);
-//             translateX = startOffset + deltaX;
+//             translateX = Math.min(startOffset + deltaX, 0);
+            translateX = startOffset + deltaX;
 
             if (direction === 'left' || direction === 'right') {
-
                 $drawer[0].style.transform = 'translate3d(' + translateX + 'px, 0, 0)';
                 $backdrop[0].style.opacity = (drawerWidth + translateX) / drawerWidth;
-
-                requestAnimationFrame(update);
             }
         }
 

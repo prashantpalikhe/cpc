@@ -9,7 +9,7 @@
         return {
             controller: 'FriendsAppController',
             controllerAs: 'friendsApp',
-            templateUrl: '/cpc/src/views/friendsApp.html',
+            templateUrl: '/src/views/friendsApp.html',
             transclude: true
         };
     }
