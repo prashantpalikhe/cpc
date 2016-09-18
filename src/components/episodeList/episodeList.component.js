@@ -1,5 +1,3 @@
-import angular from 'angular';
-
 const EpisodeListComponent = {
     bindings: {
         src: '<'
