@@ -1,10 +1,11 @@
-function NowPlayingController($location) {
-    var vm = this;
+class NowPlayingController
+{
+    constructor ($location) {
+        this.$location = $location;
+    }
 
-    vm.startWatching = startWatching;
-
-    function startWatching() {
-        $location.path(`/watch/${vm.episode.id}`);
+    startWatching() {
+        this.$location.path(`/watch/${this.episode.id}`);
     }
 }
 
