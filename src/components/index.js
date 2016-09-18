@@ -2,7 +2,7 @@ import angular from 'angular';
 import App from './app';
 import Drawer from './drawer';
 import Episode from './episode';
-import Episodes from  './episodes';
+import EpisodeList from  './episodeList';
 import Navigation from './navigation';
 import Search from './search';
 import NowPlayingEpisode from './nowPlaying';
@@ -13,7 +13,7 @@ const components = angular
         App,
         Drawer,
         Episode,
-        Episodes,
+        EpisodeList,
         Navigation,
         Search,
         NowPlayingEpisode,

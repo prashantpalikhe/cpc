@@ -37,7 +37,7 @@ export default function routing($routeProvider) {
                 
                     <now-playing ng-if="$ctrl.nowPlayingEpisode" episode="$ctrl.nowPlayingEpisode"></now-playing>
                 
-                    <episodes episodes-data="$ctrl.episodesData"></episodes>
+                    <episode-list src="$ctrl.episodesData"></episode-list>
                 </main>
             `
         });

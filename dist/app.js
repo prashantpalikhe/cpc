@@ -234,7 +234,7 @@ webpackJsonp([0,3],[
 	        },
 	        controllerAs: 'singleEpisode'
 	    }).when('/', {
-	        template: '\n                <main class="main main--list">\n                    <search on-query-changed="$ctrl.search(query)"></search>\n                \n                    <now-playing ng-if="$ctrl.nowPlayingEpisode" episode="$ctrl.nowPlayingEpisode"></now-playing>\n                \n                    <episodes episodes-data="$ctrl.episodesData"></episodes>\n                </main>\n            '
+	        template: '\n                <main class="main main--list">\n                    <search on-query-changed="$ctrl.search(query)"></search>\n                \n                    <now-playing ng-if="$ctrl.nowPlayingEpisode" episode="$ctrl.nowPlayingEpisode"></now-playing>\n                \n                    <episode-list src="$ctrl.episodesData"></episode-list>\n                </main>\n            '
 	    });
 	}
 
@@ -264,9 +264,9 @@ webpackJsonp([0,3],[
 
 	var _episode2 = _interopRequireDefault(_episode);
 
-	var _episodes = __webpack_require__(22);
+	var _episodeList = __webpack_require__(22);
 
-	var _episodes2 = _interopRequireDefault(_episodes);
+	var _episodeList2 = _interopRequireDefault(_episodeList);
 
 	var _navigation = __webpack_require__(23);
 
@@ -286,7 +286,7 @@ webpackJsonp([0,3],[
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var components = _angular2.default.module('app.components', [_app2.default, _drawer2.default, _episode2.default, _episodes2.default, _navigation2.default, _search2.default, _nowPlaying2.default, _episodePlayer2.default]).name;
+	var components = _angular2.default.module('app.components', [_app2.default, _drawer2.default, _episode2.default, _episodeList2.default, _navigation2.default, _search2.default, _nowPlaying2.default, _episodePlayer2.default]).name;
 
 	exports.default = components;
 
@@ -1160,14 +1160,9 @@ webpackJsonp([0,3],[
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var episodes = _angular2.default.module('episodes', []).component('episodes', {
-	    bindings: {
-	        episodesData: '<'
-	    },
-	    template: '\n            <div class="season" ng-repeat="season in $ctrl.episodesData">\n                <h2 class="season__title">Season {{ season.id }}</h2>\n\n                <div class="episodes">\n                    <episode ng-repeat="episode in season.episodes" title="{{ episode.title }}" href="#/watch/{{ episode.id }}" img="/img/{{ episode.id }}.png"></episode>\n                </div>\n            </div>\n        '
-	}).name;
+	var episodeList = _angular2.default.module('episodeList', []).component('episodeList', EpisodeListComponent).name;
 
-	exports.default = episodes;
+	exports.default = episodeList;
 
 /***/ },
 /* 23 */
