@@ -63,7 +63,8 @@ const config = {
     },
     postcss: function() {
         return [precss, autoprefixer];
-    }
-}
+    },
+    devtool: 'source-map'
+};
 
 module.exports = validate(config);

@@ -6,9 +6,9 @@ friendsService.$inject = [
 
 function friendsService($q, $http, $window) {
     const STORAGE_KEY = 'NOW_PLAYING_EPISODE';
-    var cachedEpisodesData = null;
+    let cachedEpisodesData = null;
 
-    var service = {
+    let service = {
         findEpisode,
         searchByTitle,
         getAllEpisodes,
@@ -65,9 +65,7 @@ function friendsService($q, $http, $window) {
         return $q(function (resolve, reject) {
             getAllEpisodes()
                 .then(function (allEpisodes) {
-                    var episode = allEpisodes.find(function (episode) {
-                        return episode.id === episodeId;
-                    });
+                    let episode = allEpisodes.find((episode) => episode.id === episodeId);
 
                     if (episode) {
                         resolve(episode);
@@ -94,11 +92,9 @@ function friendsService($q, $http, $window) {
         return $q(function (resolve, reject) {
             getEpisodesData()
                 .then(function (episodesData) {
-                    var allEpisodes = [];
+                    let allEpisodes = [];
 
-                    episodesData.forEach(function (season) {
-                        Array.prototype.push.apply(allEpisodes, season.episodes);
-                    });
+                    episodesData.forEach((season) => Array.prototype.push.apply(allEpisodes, season.episodes));
 
                     resolve(allEpisodes);
                 })
@@ -136,7 +132,7 @@ function friendsService($q, $http, $window) {
      * @returns {Object|null}
      */
     function getNowPlayingEpisode() {
-        var nowPlayingEpisode = $window.localStorage.getItem(STORAGE_KEY);
+        let nowPlayingEpisode = $window.localStorage.getItem(STORAGE_KEY);
 
         if (angular.isString(nowPlayingEpisode)) {
             return JSON.parse(nowPlayingEpisode);
@@ -161,15 +157,13 @@ function friendsService($q, $http, $window) {
     function searchByTitle(query) {
         return $q(function (resolve) {
             service.getEpisodesData().then(function (episodesData) {
-                var filteredEpisodesData = [];
+                let filteredEpisodesData = [];
 
                 if (angular.isString(query) && query !== '') {
                     episodesData.forEach(function (season) {
-                        var filteredSeason = {
+                        let filteredSeason = {
                             id: season.id,
-                            episodes: season.episodes.filter(function (episode) {
-                                return ~episode.title.toLowerCase().indexOf(query.toLowerCase());
-                            })
+                            episodes: season.episodes.filter((episode) => ~episode.title.toLowerCase().indexOf(query.toLowerCase()))
                         };
 
                         if (filteredSeason.episodes.length) {
