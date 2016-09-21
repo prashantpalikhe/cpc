@@ -38,6 +38,22 @@
             {
                 "id": "S2E2",
                 "title": "The One with the Breast Milk"
+            },
+            {
+                "id": "S2E3",
+                "title": "The One Where Heckles Dies"
+            },
+            {
+                "id": "S2E4",
+                "title": "The One with Phoebe's Husband"
+            },
+            {
+                "id": "S2E5",
+                "title": "The One with Five Steaks and an Eggplant"
+            },
+            {
+                "id": "S2E6",
+                "title": "The One with the Baby on the Bus"
             }
         ]
     },
@@ -51,6 +67,22 @@
             {
                 "id": "S3E2",
                 "title": "The One Where No One's Ready"
+            },
+            {
+                "id": "S3E3",
+                "title": " The One with the Jam"
+            },
+            {
+                "id": "S3E4",
+                "title": "The One with the Metaphorical Tunnel"
+            },
+            {
+                "id": "S3E5",
+                "title": "The One with Frank Jr."
+            },
+            {
+                "id": "S3E6",
+                "title": "The One with the Flashback"
             }
         ]
     }
