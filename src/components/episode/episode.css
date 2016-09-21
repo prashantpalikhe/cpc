@@ -13,7 +13,7 @@
     position: relative;
     height: 260px;
     padding: 10px;
-    max-width: 120px;
+    width: 33.33vw;
 }
 
 .episode__link {
