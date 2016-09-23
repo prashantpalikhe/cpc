@@ -6,13 +6,10 @@
 
 .episode {
     position: relative;
-    float: left;
-    width: 33.33%;
     height: 260px;
     padding: 10px;
-    max-width: 120px;
-    opacity: 1;
-    transform: scale(1);
+    width: 32vw;
+    display: inline-block;
 }
 
 .episode.ng-enter {

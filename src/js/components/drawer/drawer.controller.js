@@ -104,8 +104,6 @@
         }
 
         function onTouchStart(event) {
-            update();
-
             disableAnimation();
             startTouch = event.touches[0];
 
@@ -122,6 +120,8 @@
             direction = getSwipeDirection(previousTouch, currentTouch);
 
             previousTouch = currentTouch;
+
+            update();
         }
 
         function onTouchEnd() {
@@ -153,9 +153,8 @@
                 return;
             }
 
-//             translateX = Math.min(startOffset + deltaX, 0);
             translateX = startOffset + deltaX;
-
+           
             if (direction === 'left' || direction === 'right') {
                 $drawer[0].style.transform = 'translate3d(' + translateX + 'px, 0, 0)';
                 $backdrop[0].style.opacity = (drawerWidth + translateX) / drawerWidth;
